@@ -93,8 +93,8 @@ export default function NFCListScreen({ navigation }) {
    
     return (
         <ImageBackground
-            source={require('../assets/background_dot.png')}
-            resizeMode="repeat"
+            source={require('../assets/bg2.jpg')}
+            // resizeMode="repeat"
             style={styles.background}
         >
             <View style={styles.container}>

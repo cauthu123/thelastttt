@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, TouchableOpacity, Alert, Keyboard, TouchableWithoutFeedback } from 'react-native'; // Import Keyboard
-import { Text } from 'react-native-paper';
+
 import Background from '../components/Background';
 import Logo from '../components/Logo';
 import Header from '../components/Header';
@@ -17,7 +17,7 @@ import { ref, set, getDatabase } from 'firebase/database';
 import { getStorage, ref as storageRef1, uploadBytes, getDownloadURL } from 'firebase/storage';
 // import Modal from 'react-native-modal';
 import SpinnerOverlay from 'react-native-loading-spinner-overlay'; // Import thư viện
-
+import { Text, IconButton } from 'react-native-paper';
 
 export default function RegisterScreen({ navigation }) {
   const [name, setName] = useState({ value: '', error: '' });
@@ -138,7 +138,18 @@ export default function RegisterScreen({ navigation }) {
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={{ flex: 1 }}>
         <Background>
-          <BackButton goBack={navigation.goBack} />
+          <IconButton
+            icon="arrow-left"
+            color="#000"
+            size={30}
+            onPress={() =>
+              navigation.reset({
+                index: 0,
+                routes: [{ name: 'LoginScreen' }],
+              })
+            }
+            style={styles.leftIcon}
+          />
           <Logo />
           <Header>Tạo tài khoản</Header>
           {currentStep === 1 && (
@@ -264,4 +275,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: theme.colors.primary,
   },
+  leftIcon: {
+    position: 'absolute',
+    left: 1,
+    top: 30,
+  }
 });

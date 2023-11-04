@@ -76,6 +76,7 @@ export default function LoginScreen({ navigation }) {
       </Button>
       <View style={styles.row}>
         <Text>Không có tài khoản? </Text>
+
         <TouchableOpacity onPress={() => navigation.replace('RegisterScreen')}>
           <Text style={styles.link}>Đăng ký</Text>
         </TouchableOpacity>

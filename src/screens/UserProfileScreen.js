@@ -6,6 +6,9 @@ import { IconButton } from 'react-native-paper';
 import { ref, get } from 'firebase/database';
 import { auth, database } from '../../firebase';
 import BottomBar from '../components/BottomBar';
+import { Linking } from 'react-native';
+
+
 
 export default function UserProfileScreen({ navigation }) {
     const [userData, setUserData] = useState({
@@ -18,7 +21,12 @@ export default function UserProfileScreen({ navigation }) {
         linkedin: '',
     });
 
-    const [profileURL, setProfileURL] = useState('');
+
+    const handlelink = () => {
+        const HDSD = `https://docs.google.com/document/d/1ATsN9MxQ7zBU0SQVDz_c-8JcoFGmmDXO/edit?fbclid=IwAR11ZyJTfa-27bg83hERAkIofXmOdi12H9MHnBkxTPBSQ_crzw2T8sFtIhs`;
+        Linking.openURL(HDSD);
+    };
+
 
     useEffect(() => {
         const userId = auth.currentUser.uid;
@@ -152,22 +160,19 @@ export default function UserProfileScreen({ navigation }) {
                                 style={[styles.right_icon]}
                             />
                         </TouchableOpacity> */}
-                        <View style={styles.horizontalLine}></View>
+                        {/* <View style={styles.horizontalLine}></View> */}
                         <TouchableOpacity
                             style={styles.userProfileItem}
-                            onPress={() => {
-                                Alert.alert('Tính năng chưa hoạt động', 'Bạn hãy cố gắng chờ tính năng này ra mắt nhé.')
-                            }}
-
+                            onPress={handlelink}
                         >
                             <IconButton
-                                icon="flag"
+                                icon="file-document"
                                 color="#000"
                                 size={30}
                                 style={styles.icon}
                             />
                             <View style={styles.userInfo}>
-                                <Text style={styles.title_body}>Báo cáo sự cố</Text>
+                                <Text style={styles.title_body}>Hướng dẫn sử dụng</Text>
                             </View>
                             <IconButton
                                 icon="chevron-right"
@@ -176,6 +181,7 @@ export default function UserProfileScreen({ navigation }) {
                                 style={styles.right_icon}
                             />
                         </TouchableOpacity>
+
                         <TouchableOpacity
                             style={styles.userProfileItem}
                             onPress={() => {

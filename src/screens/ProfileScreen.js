@@ -22,10 +22,9 @@ export default function ProfileScreen({ route, navigation }) {
     linkedin: profileData.linkedin,
   });
 
-  // const [profileURL, setProfileURL] = useState('');
+  
   // const [showWebView, setShowWebView] = useState(false);
   // const [webViewUrl, setWebViewUrl] = useState('');
-  // const profileURL = `http://192.168.1.3:5500/detail.html?userId=${userId}&profileId=${profileData.id}`;
   // const handleShare = () => {
   //   const NFC = `http://192.168.1.3:5500/NFC.html`;
   //   setWebViewUrl(NFC);
